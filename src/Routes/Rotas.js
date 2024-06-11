@@ -6,11 +6,11 @@ import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 
 import Home from '../Pages/Home';
-import Busca from '../Pages/Busca';
 import Login from '../Pages/Login';
-import Videos from '../Pages/Videos';
-import Perfil from '../Pages/Perfil';
-import Inserir from '../Pages/Inserir';
+import Cadastrar from '../Pages/Cadastrar';
+import Observacao from '../Pages/Observacao';
+import Detalhes from '../Pages/Detalhes';
+
 
 
 const Tab = createBottomTabNavigator();
@@ -36,6 +36,15 @@ export default function Rotas() {
                 }}
             >
                 <Tab.Screen
+                    name="Cadastrar"
+                    component={Cadastrar}
+                    options={{
+                        tabBarIcon: ({ color, size }) => (
+                            <MaterialCommunityIcons name="account" color={color} size={size} />
+                        ),
+                    }}
+                />
+                <Tab.Screen
                     name="Home"
                     component={Home}
                     options={{
@@ -45,39 +54,20 @@ export default function Rotas() {
                     }}
                 />
                 <Tab.Screen
-                    name="Busca"
-                    component={Busca}
+                    name="Detalhes"
+                    component={Detalhes}
                     options={{
                         tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="magnify" color={color} size={size} />
-                        ),
-                    }}
-
-                />
-                <Tab.Screen
-                    name="Inserir"
-                    component={Inserir}
-                    options={{
-                        tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="plus-box" color={color} size={size} />
+                            <MaterialCommunityIcons name="clipboard-text" color={color} size={size} />
                         ),
                     }}
                 />
                 <Tab.Screen
-                    name="Videos"
-                    component={Videos}
+                    name="Criar uma Observação"
+                    component={Observacao}
                     options={{
                         tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="youtube-tv" color={color} size={size} />
-                        ),
-                    }}
-                />
-                <Tab.Screen
-                    name="Perfil"
-                    component={Perfil}
-                    options={{
-                        tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="account-circle" color={color} size={size} />
+                            <MaterialCommunityIcons name="book" color={color} size={size} />
                         ),
                     }}
                 />

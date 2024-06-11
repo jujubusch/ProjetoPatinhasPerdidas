@@ -16,7 +16,7 @@ export default function Login() {
 
     return (
         <ScrollView contentContainerStyle={css.container}>
-            <Image source={require("../../assets/logo.png")} style={css.logo} />
+            <Image source={require("../../assets/Logo (2).png")} style={css.logo} />
             <TextInput
                 inputMode="email"
                 placeholder="Email"
