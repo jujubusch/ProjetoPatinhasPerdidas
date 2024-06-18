@@ -8,10 +8,7 @@ import { AuthContext } from '../Context/AuthContext';
 import Home from '../Pages/Home';
 import Login from '../Pages/Login';
 import Cadastrar from '../Pages/Cadastrar';
-import Observacao from '../Pages/Observacao';
 import Detalhes from '../Pages/Detalhes';
-
-
 
 const Tab = createBottomTabNavigator();
 
@@ -59,15 +56,6 @@ export default function Rotas() {
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <MaterialCommunityIcons name="clipboard-text" color={color} size={size} />
-                        ),
-                    }}
-                />
-                <Tab.Screen
-                    name="Criar uma Observação"
-                    component={Observacao}
-                    options={{
-                        tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="book" color={color} size={size} />
                         ),
                     }}
                 />

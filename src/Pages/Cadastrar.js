@@ -26,7 +26,7 @@ export default function Cadastrar() {
 
   async function Cadastrar() 
   {
-    await fetch('https://10.139.75.12/cadastrar',{
+    await fetch('http://10.139.75.12:5251/api/Usuario/GetAllUsuario',{
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'

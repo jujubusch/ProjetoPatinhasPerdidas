@@ -1,23 +1,41 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+const [detalhes, setDetalhes] = useState([])
 
 const Detalhes = ({ route }) => {
-  const { animais } = route.params;
+  const { Detalhes } = route.params;
+
+  async function getDetalhes() {
+    await fetch('http://10.139.75.12:5251/api/Animal/GetAllAnimais', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(json => setDetalhes(json))
+      .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    getDetalhes();
+  }, [])
 
   return (
     <View style={styles.container}>
-      <Image source={{uri: animais.image}} style={styles.image} />
+      
       <View style={styles.DetalhesContainer}>
-        <Text style={styles.title}>{animais.name}</Text>
-        <Text style={styles.raca}>{animais.breed}</Text>
-        <Text style={styles.tipo}>{animais.type}</Text>
-        <Text style={styles.cor}>{animais.color}</Text>
-        <Text style={styles.sexo}>{animais.genere}</Text>
-        <Text style={styles.observacao}>{animais.observation}</Text>
-        <Text style={styles.foto}>{animais.picture}</Text>
-        <Text style={styles.foto}>{animais.picture}</Text>
-        <Text style={styles.location}>Last seen: {animais.lastSeenLocation}</Text>
-        <Text style={styles.date}>Date: {animal.lastSeenDate}</Text>
+        <Text style={styles.title}>{Detalhes.name}</Text>
+        <Text style={styles.raca}>{Detalhes.breed}</Text>
+        <Text style={styles.tipo}>{Detalhes.type}</Text>
+        <Text style={styles.cor}>{Detalhes.color}</Text>
+        <Text style={styles.sexo}>{Detalhes.genere}</Text>
+        <Text style={styles.observacao}>{Detalhes.observation}</Text>
+        <Text style={styles.foto}>{Detalhes.picture}</Text>
+        <Text style={styles.dtDesaparecimento}>{Detalhes.missing}</Text>
+        <Text style={styles.dtEncontrado}>{Detalhes.found}</Text>
+        <Text style={styles.status}>{Detalhes.status}</Text>
       </View>
     </View>
   );
@@ -39,16 +57,28 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 10,
   },
-  description: {
+  raca: {
     fontSize: 18,
     textAlign: 'center',
     marginBottom: 10,
   },
-  location: {
+  tipo: {
     fontSize: 16,
     marginBottom: 5,
   },
-  date: {
+  cor: {
+    fontSize: 16,
+  },
+  sexo: {
+    fontSize: 16,
+  },
+  observacao: {
+    fontSize: 16,
+  },
+  foto: {
+    fontSize: 16,
+  },
+  dtDesaparecimento: {
     fontSize: 16,
   },
   image: {
@@ -102,18 +132,3 @@ const css = StyleSheet.create({
   }
 })*/
 
-/*async function getProdutos() {
-    await fetch('https://10.139.75.12/detalhes', {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-      .then(res => res.json())
-      .then(json => setProdutos(json))
-      .catch(err => console.log(err))
-  }
-
-  useEffect(() => {
-    getProdutos();
-  }, [])*/
